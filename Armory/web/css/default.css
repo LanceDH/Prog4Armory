@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10-jan-2015, 13:14:59
+    Author     : LanceDH
+*/
+
+#centerDiv{
+    width: 70% ;
+    min-width: 700px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+.charListBlock{
+    display: block;
+    min-width: 260px;
+    width: 33.33%;
+    float: left;
+}
+
+.charListBlock > .left{
+    display: block;
+    float: left;
+    height: 100%;
+}
+
+.charListBlock > .right{
+    display: block;
+    width: 75% ;
+    height: 64px;
+    float: left;
+}
+
+.right > .name{
+    height: 49%;
+}
