@@ -8,6 +8,14 @@ and open the template in the editor.
     Author     : LanceDH
 */
 
+body{
+    background-color: #CCCCCC
+}
+
+header{
+    height: 75px;
+}
+
 #centerDiv{
     width: 70% ;
     min-width: 700px;
@@ -37,4 +45,54 @@ and open the template in the editor.
 
 .right > .name{
     height: 49%;
+}
+
+.CharDetailLeft{
+    display: block;
+    float: left;
+    width: 50%;
+    //height: 100%;
+}
+
+.CharDetailRight{
+    display: block;
+    float: right;
+    width: 50%;
+    //height: 100%;
+}
+
+.itemBlock{
+    display: block;
+    min-width: 260px;
+    width:100%;
+    float: left;
+}
+
+.itemBlock > .left{
+    display: block;
+    float: left;
+    height: 100%;
+}
+
+.itemBlock > .right{
+    margin: 2px 0px 0px 10px;
+    display: block;
+    //width: 75% ;
+    height: 64px;
+    float: left;
+}
+
+.floatClear{
+    clear: both;
+}
+
+#charName{
+    font-size: 25pt;
+    font-weight: bold;
+}
+
+#charComboInfo{
+    font-size: 15pt;
+    font-weight: bold;
+    padding-bottom: 25px;
 }
