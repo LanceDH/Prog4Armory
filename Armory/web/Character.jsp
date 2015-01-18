@@ -4,12 +4,14 @@
     Author     : LanceDH
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% DAL.Character c = (DAL.Character)session.getAttribute("Character"); %>
 <% Map<String, Integer> attributeMap = (Map<String, Integer>)session.getAttribute("Attributes"); %>
+<% ArrayList<DAL.Character> relatedCharacters = (ArrayList<DAL.Character>)session.getAttribute("AccountCharacters"); %>
 
 <html>
     <head>
@@ -29,7 +31,10 @@
                 </form>
             </header>
         <main>
-            <div id="charName"><%=c.getName()%></div>
+            
+            <div class="characterInfo">
+            <div class="CharDetailLeft">
+                <div id="charName"><%=c.getName()%></div>
             <div id="charComboInfo">
                 <% String raceIcon = Services.MiscServices.GetImagePath(c.getRace().getIconPath(), 26); 
                    String classIcon = Services.MiscServices.GetImagePath(c.getCharclass().getIconPath(), 26); 
@@ -39,8 +44,9 @@
                   <img src="../<%= classIcon %>">
                 <%=c.getCharclass().getName()%>
             </div>
-            
-            <div class="CharDetailLeft">
+                
+                
+                
                 <% for (Map.Entry<String, Integer> attr : attributeMap.entrySet()) { %>
                     <%= attr.getValue() %> <%= attr.getKey()%><br>
                 
@@ -167,6 +173,46 @@
             
             
             <div class="floatClear"></div>
+            </div>
+            <div class="hSeperator"></div>
+            
+            <div id="relatedCharacters">
+                
+                <h2>Related Characters</h2>
+                
+                <% for(DAL.Character chara : relatedCharacters){ 
+                
+                if(!chara.getName().equals(c.getName())){
+                %>
+                <% 
+                   String relRaceIcon = Services.MiscServices.GetImagePath(chara.getRace().getIconPath()); 
+                   String relClassIcon = Services.MiscServices.GetImagePath(chara.getCharclass().getIconPath(), 26); 
+                %>
+
+                
+                
+                <div class="charListBlock">
+                    <a href="<%= chara.getName() %>">
+                    <div class="left">
+                        <img src="../<%= relRaceIcon %>">
+                    </div>
+                    <div class="right">
+                        <div class="name">
+                            <%=chara.getName()%>
+                        </div>
+                        <div class="detail">
+                            <img src="../<%= relClassIcon %>">
+                            <%=c.getRace().getName()%> <%=chara.getCharclass().getName()%>
+                        </div>
+                    </div>
+                        <div class="floatClear"></div>
+                                                                    </a>        
+                </div>
+                        
+                
+                <% }} %>
+                <div class="floatClear"></div>
+            </div>
             
         
                 </main>

@@ -51,6 +51,8 @@ public class ViewCharacter extends HttpServlet {
                 dispatcher.forward(request, response);
             }
             
+            ArrayList<DAL.Character> accountCharacters = Services.AccountServices.GetCharactersOfAccount(c.getAccount().getId());
+
             ArrayList<Attribute> attributeList = Services.MiscServices.getAttributeList();
             
             if(attributeList == null){
@@ -70,6 +72,7 @@ public class ViewCharacter extends HttpServlet {
             c.setItemByWeaponItemId(ProcessItem(c.getItemByWeaponItemId()));
             
             request.getSession().setAttribute("Attributes", _attributeMap);
+            request.getSession().setAttribute("AccountCharacters", accountCharacters);
             request.getSession().setAttribute("Character", c);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/Character.jsp");
             dispatcher.forward(request, response);

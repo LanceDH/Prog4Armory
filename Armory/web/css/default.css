@@ -46,7 +46,7 @@ main{
     padding: 10px 20px 10px 20px;
 }
 
-h1{
+h1, h2{
     margin-top: 0px;
 }
 
@@ -158,4 +158,19 @@ header > .search{
 
 header > .search > .searchInput{
     width: 200px;
+}
+
+#relatedCharacters{
+    margin-top: 20px;
+}
+
+.hSeperator{
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-image: url("../Images/UI_HSeperator.png");
+}
+
+.characterInfo{
+    margin: 10px;
 }
