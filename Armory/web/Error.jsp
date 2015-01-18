@@ -15,8 +15,10 @@
     <body>
         <div id="centerDiv">
             <header>
-                <form action="../Search">
-                    search: <input type="text" name="search">
+                <a href="../../Armory" id="logo">
+                </a>
+                <form action="../Search" class="search">
+                    <input type="text" name="search" class="searchInput">
                     <input type="submit" value="Search">
                 </form>
             </header>

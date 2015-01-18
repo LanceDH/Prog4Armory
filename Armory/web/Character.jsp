@@ -19,10 +19,15 @@
     </head>
     <body>
         <div id="centerDiv">
-        <header><form action="../Search">
-                    search: <input type="text" name="search">
+            
+        <header>
+                <a href="../../Armory" id="logo">
+                </a>
+                <form action="../Search" class="search">
+                    <input type="text" name="search" class="searchInput">
                     <input type="submit" value="Search">
-                </form></header>
+                </form>
+            </header>
         <main>
             <div id="charName"><%=c.getName()%></div>
             <div id="charComboInfo">
@@ -36,6 +41,13 @@
             </div>
             
             <div class="CharDetailLeft">
+                <% for (Map.Entry<String, Integer> attr : attributeMap.entrySet()) { %>
+                    <%= attr.getValue() %> <%= attr.getKey()%><br>
+                
+                <% } %>
+            </div>
+            
+            <div class="CharDetailRight">
                 
 
                 
@@ -60,9 +72,8 @@
                             <div class="detail">
                                 +<%=c.getItemByWeaponItemId().getAttribute1value() %> <%=c.getItemByWeaponItemId().getAttribute().getName() %>
                             </div>
-                        <% }else{ %>
-                            No weapon for you!<br>
-                        <% } %>
+                        <% }%>
+                            
                     </div>
                 
                 </div>
@@ -89,9 +100,8 @@
                             <div class="detail">
                                 +<%=c.getItemByChestItemId().getAttribute1value() %> <%=c.getItemByChestItemId().getAttribute().getName() %>
                             </div>
-                        <% }else{ %>
-                            No chest for you!<br>
-                        <% } %>
+                        <% }%>
+                            
                     </div>
                 
                 </div>
@@ -118,9 +128,8 @@
                             <div class="detail">
                                 +<%=c.getItemByLegsItemId().getAttribute1value() %> <%=c.getItemByLegsItemId().getAttribute().getName() %>
                             </div>
-                        <% }else{ %>
-                            No legs for you!<br>
-                        <% } %>
+                        <% }%>
+                            
                     </div>
                 
                 </div>
@@ -146,9 +155,8 @@
                             <div class="detail">
                                 +<%=c.getItemByBootsItemId().getAttribute1value() %> <%=c.getItemByBootsItemId().getAttribute().getName() %>
                             </div>
-                        <% }else{ %>
-                            No boots for you!<br>
-                        <% } %>
+                        <% }%>
+                            
                     </div>
                 
                 </div>
@@ -156,12 +164,7 @@
                         
                 <div class="floatClear"></div>
             </div>
-            <div class="CharDetailRight">
-                <% for (Map.Entry<String, Integer> attr : attributeMap.entrySet()) { %>
-                    <%= attr.getValue() %> <%= attr.getKey()%><br>
-                
-                <% } %>
-            </div>
+            
             
             <div class="floatClear"></div>
             

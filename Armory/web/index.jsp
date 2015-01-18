@@ -16,15 +16,20 @@
     </head>
     <body>
         <div id="centerDiv">
-        <header></header>
+            <header>
+                <a href="../Armory" id="logo">
+                </a>
+                <form action="Search" class="search">
+                    <input type="text" name="search" class="searchInput">
+                    <input type="submit" value="Search">
+                </form>
+            </header>
         <main>
         <h1>Hello World!</h1>
         <form action="Search">
                     search: <input type="text" name="search">
                     <input type="submit" value="Search">
                 </form>
-        <table>
-        </table>
                 </main>
 
         </div>

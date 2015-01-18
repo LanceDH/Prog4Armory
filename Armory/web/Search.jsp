@@ -18,11 +18,12 @@
     <body>
         <div id="centerDiv">
             <header>
-                <form action="Search">
-                    search: <input type="text" name="search">
+                <a href="../Armory" id="logo">
+                </a>
+                <form action="Search" class="search">
+                    <input type="text" name="search" class="searchInput">
                     <input type="submit" value="Search">
                 </form>
-        
             </header>
         <main>
             <h2>Search results for <%= request.getParameter("search") %>.</h2>
@@ -30,9 +31,9 @@
         <%
             for(DAL.Character c: chars ){
                 %>
-                <a href="ViewCharacter/<%= c.getName() %>">
-                <div class="charListBlock">
                 
+                <div class="charListBlock">
+                    <a href="ViewCharacter/<%= c.getName() %>">
                     <div class="left">
                         <% String iconPath = Services.MiscServices.GetImagePath(c.getRace().getIconPath()); %>
                         <img src="<%= iconPath %>">
@@ -47,45 +48,13 @@
                             <%=c.getRace().getName()%> <%=c.getCharclass().getName()%>
                         </div>
                     </div>
-                
+                        <div class="floatClear"></div>
+                                                                    </a>        
                 </div>
-                </a>
-                
-               
-                
-                
-                <!--
-                out.println("<a href='ViewCharacter/"+ c.getName() +"'>");
-                out.println("<div class='charListBlock'>");
-                
-                    out.println("<div class='left'>");
-                        String iconPath = Services.MiscServices.GetImagePath(c.getRace().getIconPath());
-                        out.println("<img src='"+ iconPath +"' >");
-                    out.println("</div>");
-                    out.println("<div class='right'>");
-                        out.println("<div class='name'>");
-                            out.println(c.getName());
-                        out.println("</div>");
-                        out.println("<div class='detail'>");
-                            iconPath = Services.MiscServices.GetImagePath(c.getCharclass().getIconPath(), 26);
-                            out.println("<img src='"+ iconPath +"' >");
-                            out.println(c.getRace().getName() + " " + c.getCharclass().getName());
-                        out.println("</div>");
-                    out.println("</div>");
-                
-                out.println("</div>");
-                out.println("</a>");
-                
-                /*out.println("<tr>");
-                out.println("<td>" + c.getRace().getName() + "</td>");
-                out.println("<td>" + c.getCharclass().getName() + "</td>");
-                out.println("<td>" + c.getName() + "</td>");
-                out.println("</tr>");
-                */
-                -->
                 <%
             }
         %>
+        <div class="floatClear"></div>
                 </main>
 
         </div>
