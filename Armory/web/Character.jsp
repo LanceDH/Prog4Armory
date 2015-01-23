@@ -18,6 +18,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Character Page</title>
         <link href="../css/default.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <div id="centerDiv">
@@ -29,6 +30,7 @@
                     <input type="text" name="search" class="searchInput">
                     <input type="submit" value="Search">
                 </form>
+            <div class="floatClear"></div>
             </header>
         <main>
             
@@ -45,12 +47,13 @@
                 <%=c.getCharclass().getName()%>
             </div>
                 
-                
-                
-                <% for (Map.Entry<String, Integer> attr : attributeMap.entrySet()) { %>
-                    <%= attr.getValue() %> <%= attr.getKey()%><br>
-                
-                <% } %>
+                <div class="attributeList">
+                    <h3>Attributes:</h3>
+                    <% for (Map.Entry<String, Integer> attr : attributeMap.entrySet()) { %>
+                        + <%= attr.getValue() %> <%= attr.getKey()%><br>
+
+                    <% } %>
+                </div>
             </div>
             
             <div class="CharDetailRight">
@@ -73,17 +76,19 @@
                     <div class="right">
                         <% if(c.getItemByWeaponItemId()!= null){ %>
                             <div class="name">
-                                <%=c.getItemByWeaponItemId().getName()%> <%=c.getItemByWeaponItemId().getSlot().getName() %>
+                                <%=c.getItemByWeaponItemId().getName()%> 
                             </div>
                             <div class="detail">
-                                +<%=c.getItemByWeaponItemId().getAttribute1value() %> <%=c.getItemByWeaponItemId().getAttribute().getName() %>
+                                +<%=c.getItemByWeaponItemId().getAttribute1value() %> <%=c.getItemByWeaponItemId().getAttribute1().getName() %>
+                                <% if(c.getItemByWeaponItemId().getAttribute2() != null){ %>
+                                    <br>+<%=c.getItemByWeaponItemId().getAttribute2value() %> <%=c.getItemByWeaponItemId().getAttribute2().getName() %>
+                                <% }%>
                             </div>
-                        <% }%>
-                            
+                        <% }%>   
                     </div>
                 
                 </div>
-                
+
                 
                 <!-- Chest -->
                
@@ -101,13 +106,15 @@
                     <div class="right">
                          <% if(c.getItemByChestItemId()!= null){ %>
                             <div class="name">
-                                <%=c.getItemByChestItemId().getName()%> <%=c.getItemByChestItemId().getSlot().getName() %>
+                                <%=c.getItemByChestItemId().getName()%> 
                             </div>
                             <div class="detail">
-                                +<%=c.getItemByChestItemId().getAttribute1value() %> <%=c.getItemByChestItemId().getAttribute().getName() %>
+                                +<%=c.getItemByChestItemId().getAttribute1value() %> <%=c.getItemByChestItemId().getAttribute1().getName() %>
+                                <% if(c.getItemByChestItemId().getAttribute2() != null){ %>
+                                    <br>+<%=c.getItemByChestItemId().getAttribute2value() %> <%=c.getItemByChestItemId().getAttribute2().getName() %>
+                                <% }%>
                             </div>
-                        <% }%>
-                            
+                        <% }%>   
                     </div>
                 
                 </div>
@@ -129,15 +136,17 @@
                     <div class="right">
                         <% if(c.getItemByLegsItemId()!= null){ %>
                             <div class="name">
-                                <%=c.getItemByLegsItemId().getName()%> <%=c.getItemByLegsItemId().getSlot().getName() %>
+                                <%=c.getItemByLegsItemId().getName()%>
                             </div>
                             <div class="detail">
-                                +<%=c.getItemByLegsItemId().getAttribute1value() %> <%=c.getItemByLegsItemId().getAttribute().getName() %>
+                                +<%=c.getItemByLegsItemId().getAttribute1value() %> <%=c.getItemByLegsItemId().getAttribute1().getName() %>
+                                <% if(c.getItemByLegsItemId().getAttribute2() != null){ %>
+                                    <br>+<%=c.getItemByLegsItemId().getAttribute2value() %> <%=c.getItemByLegsItemId().getAttribute2().getName() %>
+                                <% }%>
                             </div>
                         <% }%>
                             
                     </div>
-                
                 </div>
                 
                 
@@ -156,15 +165,17 @@
                     <div class="right">
                         <% if(c.getItemByBootsItemId() != null){ %>
                             <div class="name">
-                                <%=c.getItemByBootsItemId().getName()%> <%=c.getItemByBootsItemId().getSlot().getName() %>
+                                <%=c.getItemByBootsItemId().getName()%> 
                             </div>
                             <div class="detail">
-                                +<%=c.getItemByBootsItemId().getAttribute1value() %> <%=c.getItemByBootsItemId().getAttribute().getName() %>
+                                +<%=c.getItemByBootsItemId().getAttribute1value() %> <%=c.getItemByBootsItemId().getAttribute1().getName() %>
+                                <% if(c.getItemByBootsItemId().getAttribute2() != null){ %>
+                                    <br>+<%=c.getItemByBootsItemId().getAttribute2value() %> <%=c.getItemByBootsItemId().getAttribute2().getName() %>
+                                <% }%>
                             </div>
                         <% }%>
                             
                     </div>
-                
                 </div>
                 
                         
@@ -202,7 +213,7 @@
                         </div>
                         <div class="detail">
                             <img src="../<%= relClassIcon %>">
-                            <%=c.getRace().getName()%> <%=chara.getCharclass().getName()%>
+                            <%=chara.getRace().getName()%> <%=chara.getCharclass().getName()%>
                         </div>
                     </div>
                         <div class="floatClear"></div>

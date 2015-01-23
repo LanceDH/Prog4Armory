@@ -24,6 +24,7 @@
                     <input type="text" name="search" class="searchInput">
                     <input type="submit" value="Search">
                 </form>
+                <div class="floatClear"></div>
             </header>
         <main>
             <h2>Search results for <%= request.getParameter("search") %>.</h2>

@@ -11,7 +11,13 @@ import DAL.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -71,6 +77,9 @@ public class ViewCharacter extends HttpServlet {
             c.setItemByLegsItemId(ProcessItem(c.getItemByLegsItemId()));
             c.setItemByWeaponItemId(ProcessItem(c.getItemByWeaponItemId()));
             
+            _attributeMap = SortMap(_attributeMap); 
+                    
+                    
             request.getSession().setAttribute("Attributes", _attributeMap);
             request.getSession().setAttribute("AccountCharacters", accountCharacters);
             request.getSession().setAttribute("Character", c);
@@ -83,7 +92,10 @@ public class ViewCharacter extends HttpServlet {
     private DAL.Item ProcessItem(DAL.Item item){
         if (item != null) {
             Item detailedItem = Services.ItemServices.GetItemById(item.getId());
-            AddAttributeValue(detailedItem.getAttribute().getName(), detailedItem.getAttribute1value());
+            AddAttributeValue(detailedItem.getAttribute1().getName(), detailedItem.getAttribute1value());
+            if(detailedItem.getAttribute2()!=null){
+                AddAttributeValue(detailedItem.getAttribute2().getName(), detailedItem.getAttribute2value());
+            }
             return detailedItem;
         }
         return null;
@@ -101,6 +113,26 @@ public class ViewCharacter extends HttpServlet {
                 
         }
         
+    }
+    
+    // http://beginnersbook.com/2013/12/how-to-sort-hashmap-in-java-by-keys-and-values/
+    private Map SortMap(Map<String, Integer> unsortedMap){
+        List list = new LinkedList(unsortedMap.entrySet());
+ 
+	Collections.sort(list, new Comparator() {
+                @Override
+		public int compare(Object o1, Object o2) {
+			return ((Comparable) ((Map.Entry) (o2)).getValue())
+						.compareTo(((Map.Entry) (o1)).getValue());
+		}
+	});
+ 
+	Map sortedMap = new LinkedHashMap();
+	for (Iterator it = list.iterator(); it.hasNext();) {
+		Map.Entry entry = (Map.Entry) it.next();
+		sortedMap.put(entry.getKey(), entry.getValue());
+	}
+	return sortedMap;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

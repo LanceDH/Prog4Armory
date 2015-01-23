@@ -23,6 +23,7 @@
                     <input type="text" name="search" class="searchInput">
                     <input type="submit" value="Search">
                 </form>
+                <div class="floatClear"></div>
             </header>
         <main>
         <h1>Hello World!</h1>
